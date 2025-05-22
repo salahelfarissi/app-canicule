@@ -26,6 +26,7 @@ import Paper from "@mui/material/Paper";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
+import Card from "@mui/material/Card";
 
 import TrainIcon from "@mui/icons-material/Train";
 
@@ -103,6 +104,7 @@ function App() {
         {/* Left Side */}
         <Grid container size={6} direction="column" gap={1} p={2}>
           <Grid container justifyContent="center" alignItems="center" gap={4}>
+            <Typography fontStyle="italic">27-05-2025, 14h à 17h</Typography>
             <Grid minWidth="380px">
               <Alert severity="warning">
                 <AlertTitle>Alerte 322</AlertTitle>
@@ -143,6 +145,7 @@ function App() {
             </Grid>
           </Grid>
           <Grid container justifyContent="center" alignItems="center" gap={4}>
+            <Typography fontStyle="italic">29-05-2025, 4h à 7h</Typography>
             <Grid minWidth="380px">
               <Alert severity="warning">
                 <AlertTitle>Alerte 323</AlertTitle>
@@ -181,6 +184,7 @@ function App() {
             </Grid>
           </Grid>
           <Grid container justifyContent="center" alignItems="center" gap={4}>
+            <Typography fontStyle="italic">30-05-2025, 13h à 22h</Typography>
             <Grid minWidth="360px">
               <Alert severity="error">
                 <AlertTitle>Alerte 324</AlertTitle>
@@ -314,12 +318,96 @@ function App() {
             </Grid>
           </Paper>
           <Paper>
-            <Grid container justifyContent="center">
-              <Grid>
-                <Typography variant="h5">Actions à réaliser</Typography>
+            <Grid container justifyContent="center" p={2}>
+              <Grid container size={12} justifyContent="center">
+                <Typography
+                  variant="h5"
+                  sx={{
+                    pb: 2,
+                  }}
+                >
+                  Actions à réaliser
+                </Typography>
               </Grid>
-              <Grid size={12} container>
-                <Typography fontWeight="bold">Rupture caténaire</Typography>
+              <Grid container gap={2}>
+                <Grid container size={12}>
+                  <Typography
+                    fontWeight="bold"
+                    sx={{
+                      color: "#d74242",
+                    }}
+                  >
+                    Alerte 234 : Rupture caténaire
+                  </Typography>
+                </Grid>
+                <Grid container>
+                  <Card sx={{ p: 2 }}>
+                    <Grid container size={12}>
+                      <Typography>Alerte GMAO</Typography>
+                    </Grid>
+                    <FormGroup>
+                      <FormControlLabel
+                        control={<Checkbox size="small" defaultChecked />}
+                        label="Plan de maintenance"
+                      />
+                      <FormControlLabel
+                        control={<Checkbox size="small" />}
+                        label="Stock"
+                      />
+                    </FormGroup>
+                  </Card>
+                </Grid>
+                <Grid>
+                  <Card sx={{ p: 2 }}>
+                    <Grid container size={12}>
+                      <Typography>Humain</Typography>
+                    </Grid>
+                    <FormGroup>
+                      <FormControlLabel
+                        control={<Checkbox size="small" defaultChecked />}
+                        label="Prévisionnel équipe"
+                      />
+                      <FormControlLabel
+                        control={<Checkbox size="small" />}
+                        label="Tournée terrain"
+                      />
+                    </FormGroup>
+                  </Card>
+                </Grid>
+                <Grid>
+                  <Card sx={{ p: 2 }}>
+                    <Grid container size={12}>
+                      <Typography>Communication</Typography>
+                    </Grid>
+                    <FormGroup>
+                      <FormControlLabel
+                        control={<Checkbox size="small" defaultChecked />}
+                        label="Alerte Equipe GI / ET"
+                      />
+                      <FormControlLabel
+                        control={<Checkbox size="small" defaultChecked />}
+                        label="Autres EF / GI / EPSF / DSR / Gestionnaire Voirie"
+                      />
+                    </FormGroup>
+                  </Card>
+                </Grid>
+                <Grid>
+                  <Card sx={{ p: 2 }}>
+                    <Grid container size={12}>
+                      <Typography>Opérationnel</Typography>
+                    </Grid>
+                    <FormGroup>
+                      <FormControlLabel
+                        control={<Checkbox size="small" defaultChecked />}
+                        label="Mise en place d'une LTV"
+                      />
+                      <FormControlLabel
+                        control={<Checkbox size="small" defaultChecked />}
+                        label="Ordre baissez panto (COGC)"
+                      />
+                    </FormGroup>
+                  </Card>
+                </Grid>
               </Grid>
             </Grid>
           </Paper>
@@ -331,7 +419,7 @@ function App() {
             zoom={13}
             scrollWheelZoom={false}
             style={{
-              height: "calc(50vh - 49px)",
+              height: "calc(100vh - 49px)",
               boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
             }}
           >
@@ -387,22 +475,6 @@ function App() {
               <Popup>Orage</Popup>
             </Marker>
           </MapContainer>
-
-          <Grid
-            container
-            justifyContent="center"
-            alignItems="center"
-            height="50vh"
-          >
-            <Box
-              component="img"
-              src={graph}
-              sx={{
-                width: "800px",
-                boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
-              }}
-            />
-          </Grid>
         </Grid>
       </Grid>
     </>
