@@ -1,0 +1,383 @@
+import L from "leaflet";
+
+import {
+  MapContainer,
+  Marker,
+  Popup,
+  TileLayer,
+  Polyline,
+  Tooltip,
+} from "react-leaflet";
+
+import Alert from "@mui/material/Alert";
+import AlertTitle from "@mui/material/AlertTitle";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
+
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+import FormGroup from "@mui/material/FormGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+
+import TrainIcon from "@mui/icons-material/Train";
+
+import { useState } from "react";
+
+import { polyligne } from "./polyligne.js";
+import { before } from "./before.js";
+import { after } from "./after.js";
+
+import redPin from "./pin-red.svg";
+import orangePin from "./pin-orange.svg";
+
+const orangeIcon = new L.Icon({
+  iconUrl: orangePin,
+  iconSize: [42, 42],
+});
+
+const redIcon = new L.Icon({
+  iconUrl: redPin,
+  iconSize: [42, 42],
+});
+
+const beforeOptions = { color: "#949495", weight: 2 };
+const afterOptions = { color: "#949495", weight: 2 };
+const limeOptions = { color: "black" };
+
+function App() {
+  const [danger, setDanger] = useState(60);
+  const [addValue, setAddValue] = useState(0);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.checked) {
+      setDanger((prev) => prev - 5);
+      setAddValue((prev) => prev - 5);
+    } else {
+      setDanger((prev) => prev + 5);
+      setAddValue(0);
+    }
+  };
+
+  const handleMediumChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.checked) {
+      setDanger((prev) => prev + 5);
+      setAddValue(5);
+    } else {
+      setDanger((prev) => prev - 5);
+      setAddValue(0);
+    }
+  };
+  return (
+    <>
+      <Box
+        p={1}
+        height={49}
+        sx={{
+          backgroundColor: "#cad122",
+          display: "flex",
+          alignItems: "center",
+          gap: 1,
+        }}
+      >
+        <TrainIcon />
+        <Typography
+          variant="h5"
+          sx={{
+            color: "#black",
+          }}
+        >
+          PrédiRail ⛈️
+        </Typography>
+      </Box>
+      <Grid container>
+        {/* Left Side */}
+        <Grid container size={6} direction="column" gap={1} p={2}>
+          <Grid container justifyContent="center" alignItems="center" gap={4}>
+            <Grid minWidth="380px">
+              <Alert severity="warning">
+                <AlertTitle>Alerte</AlertTitle>
+                <Grid container justifyContent="space-between" gap={2}>
+                  <Grid>
+                    <Typography>
+                      Orage / Vent / Affaissement caténaire
+                    </Typography>
+                  </Grid>
+                </Grid>
+              </Alert>
+            </Grid>
+            <Grid>
+              <Box
+                sx={{
+                  borderRadius: "50%",
+                  boxShadow: "0 0 5px 1px #ef7918",
+                  height: 40,
+                  width: 40,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Typography>{danger}%</Typography>
+              </Box>
+            </Grid>
+            <Grid>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                {addValue !== 0 && <Typography>{addValue}%</Typography>}
+              </Box>
+            </Grid>
+          </Grid>
+          <Grid container justifyContent="center" alignItems="center" gap={4}>
+            <Grid minWidth="380px">
+              <Alert severity="warning">
+                <AlertTitle>Alerte</AlertTitle>
+                <Grid container justifyContent="space-between" gap={2}>
+                  <Grid>
+                    <Typography>Orage / Précipitations / Obstacle</Typography>
+                  </Grid>
+                </Grid>
+              </Alert>
+            </Grid>
+            <Grid>
+              <Box
+                sx={{
+                  borderRadius: "50%",
+                  boxShadow: "0 0 5px 1px #ef7918",
+                  height: 40,
+                  width: 40,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Typography>{danger}%</Typography>
+              </Box>
+            </Grid>
+            <Grid>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                {addValue !== 0 && <Typography>{addValue}%</Typography>}
+              </Box>
+            </Grid>
+          </Grid>
+          <Grid container justifyContent="center" alignItems="center" gap={4}>
+            <Grid minWidth="360px">
+              <Alert severity="error">
+                <AlertTitle>Alerte</AlertTitle>
+                <Grid container justifyContent="space-between" gap={2}>
+                  <Grid>
+                    <Typography>
+                      Canicule / Forte chaleur / Rupture caténaire
+                    </Typography>
+                  </Grid>
+                </Grid>
+              </Alert>
+            </Grid>
+            <Grid>
+              <Box
+                sx={{
+                  borderRadius: "50%",
+                  boxShadow: "0 0 5px 1px #d74242 ",
+                  height: 40,
+                  width: 40,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Typography>{danger + 10}%</Typography>
+              </Box>
+            </Grid>
+            <Grid>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                {addValue !== 0 && <Typography>{addValue}%</Typography>}
+              </Box>
+            </Grid>
+          </Grid>
+          <Grid container size={12} gap={1} justifyContent="center" pt={2}>
+            <Grid>
+              <TextField
+                label="Saisissez votre lieu"
+                variant="outlined"
+                defaultValue="Angoulême"
+                size="small"
+              />
+            </Grid>
+            <Grid>
+              <TextField label="PK de début" variant="outlined" size="small" />
+            </Grid>
+            <Grid>
+              <TextField label="PK de fin" variant="outlined" size="small" />
+            </Grid>
+          </Grid>
+          <Paper
+            elevation={1}
+            sx={{
+              mt: 3,
+            }}
+          >
+            <Grid container size={12} gap={1} justifyContent="center" p={2}>
+              <Typography variant="h5" mb={2}>
+                Caractérisation locale
+              </Typography>
+              <Grid size={12} container justifyContent="center" gap={4}>
+                <Grid>
+                  <Typography fontWeight="bold">Caténaire</Typography>
+                  <FormGroup>
+                    <FormControlLabel
+                      control={
+                        <Checkbox size="small" onChange={handleChange} />
+                      }
+                      label="Satisfaisant"
+                    />
+                    <FormControlLabel
+                      control={<Checkbox size="small" />}
+                      label="Acceptable"
+                    />
+                    <FormControlLabel
+                      control={
+                        <Checkbox size="small" onChange={handleMediumChange} />
+                      }
+                      label="Moyen"
+                    />
+                  </FormGroup>
+                </Grid>
+                <Grid>
+                  <Typography fontWeight="bold">Voie</Typography>
+                  <FormGroup>
+                    <FormControlLabel
+                      control={
+                        <Checkbox size="small" onChange={handleChange} />
+                      }
+                      label="Satisfaisant"
+                    />
+                    <FormControlLabel
+                      control={<Checkbox size="small" />}
+                      label="Acceptable"
+                    />
+                    <FormControlLabel
+                      control={
+                        <Checkbox size="small" onChange={handleMediumChange} />
+                      }
+                      label="Moyen"
+                    />
+                  </FormGroup>
+                </Grid>
+                <Grid>
+                  <Typography fontWeight="bold">Signalement</Typography>
+                  <FormGroup>
+                    <FormControlLabel
+                      control={
+                        <Checkbox size="small" onChange={handleChange} />
+                      }
+                      label="Satisfaisant"
+                    />
+                    <FormControlLabel
+                      control={<Checkbox size="small" />}
+                      label="Acceptable"
+                    />
+                    <FormControlLabel
+                      control={
+                        <Checkbox size="small" onChange={handleMediumChange} />
+                      }
+                      label="Moyen"
+                    />
+                  </FormGroup>
+                </Grid>
+              </Grid>
+            </Grid>
+          </Paper>
+        </Grid>
+        {/* Map */}
+        <Grid size={6}>
+          <MapContainer
+            center={[45.6512351921228, 0.160380979387813]}
+            zoom={13}
+            scrollWheelZoom={false}
+            style={{
+              height: "calc(100vh - 49px)",
+            }}
+          >
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
+            />
+            <Polyline pathOptions={limeOptions} positions={polyligne}>
+              <Tooltip>
+                <TableContainer component={Paper}>
+                  <Table>
+                    <TableHead>
+                      <TableRow>
+                        <TableCell>ID Tronçon</TableCell>
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      <TableRow
+                        sx={{
+                          "&:last-child td, &:last-child th": { border: 0 },
+                        }}
+                      >
+                        <TableCell component="th" scope="row">
+                          570000-3472
+                        </TableCell>
+                      </TableRow>
+                    </TableBody>
+                  </Table>
+                </TableContainer>
+              </Tooltip>
+            </Polyline>
+            <Polyline pathOptions={beforeOptions} positions={before} />
+            <Polyline pathOptions={afterOptions} positions={after} />
+
+            <Marker
+              position={[45.6624566501422, 0.171504528005951]}
+              icon={orangeIcon}
+            >
+              <Popup>Orage / Foudre / Affaissement caténaire</Popup>
+            </Marker>
+
+            <Marker
+              position={[45.647116183027, 0.149063480514462]}
+              icon={orangeIcon}
+            >
+              <Popup>Canicule</Popup>
+            </Marker>
+
+            <Marker
+              position={[45.6417393955014, 0.135624106078359]}
+              icon={redIcon}
+            >
+              <Popup>Orage</Popup>
+            </Marker>
+          </MapContainer>
+        </Grid>
+      </Grid>
+    </>
+  );
+}
+
+export default App;
