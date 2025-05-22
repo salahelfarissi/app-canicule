@@ -539,17 +539,20 @@ function App() {
                 Mise à jout il y a quelques minutes
               </Typography>
               <Grid container alignItems="center" gap={2}>
-                <CloudOutlinedIcon
+                <WbSunnyOutlinedIcon
                   sx={{
                     fontSize: 80,
                     color: "white",
                   }}
                 />
                 <Typography color="white" fontSize={62}>
-                  19
+                  31
                 </Typography>
-                <Grid container>
+                <Grid container flexGrow={1}>
                   <Typography color="white">°C</Typography>
+                </Grid>
+                <Grid>
+                  <Typography color="white">Vent : 8 km/h</Typography>
                 </Grid>
               </Grid>
               <Grid container gap={1}>
@@ -590,7 +593,7 @@ function App() {
                     alignItems="center"
                     gap={1}
                   >
-                    jeu. 23
+                    ven. 23
                     <WbSunnyOutlinedIcon />
                     21 °
                   </Grid>
@@ -611,7 +614,7 @@ function App() {
                     alignItems="center"
                     gap={1}
                   >
-                    jeu. 24
+                    sam. 24
                     <ThunderstormOutlined />
                     21 °
                   </Grid>
@@ -632,7 +635,7 @@ function App() {
                     alignItems="center"
                     gap={1}
                   >
-                    jeu. 25
+                    dim. 25
                     <CloudOutlinedIcon />
                     21 °
                   </Grid>
@@ -653,7 +656,7 @@ function App() {
                     alignItems="center"
                     gap={1}
                   >
-                    jeu. 26
+                    lun. 26
                     <WbSunnyOutlinedIcon />
                     21 °
                   </Grid>
@@ -674,7 +677,7 @@ function App() {
                     alignItems="center"
                     gap={1}
                   >
-                    jeu. 27
+                    mar. 27
                     <WbSunnyOutlinedIcon />
                     21 °
                   </Grid>
@@ -695,7 +698,7 @@ function App() {
                     alignItems="center"
                     gap={1}
                   >
-                    jeu. 28
+                    mer. 28
                     <CloudOutlinedIcon />
                     21 °
                   </Grid>
@@ -737,7 +740,7 @@ function App() {
                     alignItems="center"
                     gap={1}
                   >
-                    jeu. 30
+                    ven. 30
                     <WbSunnyOutlinedIcon />
                     21 °
                   </Grid>
