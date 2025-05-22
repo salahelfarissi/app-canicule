@@ -396,7 +396,7 @@ function App() {
                       <FormGroup>
                         <FormControlLabel
                           control={<Checkbox size="small" defaultChecked />}
-                          label="Alerte Equipe GI / ET"
+                          label="Alerte Equipe GI / EF"
                         />
                         <FormControlLabel
                           control={<Checkbox size="small" defaultChecked />}
@@ -412,11 +412,11 @@ function App() {
                       </Grid>
                       <FormGroup>
                         <FormControlLabel
-                          control={<Checkbox size="small" defaultChecked />}
+                          control={<Checkbox size="small" />}
                           label="Mise en place d'une LTV"
                         />
                         <FormControlLabel
-                          control={<Checkbox size="small" defaultChecked />}
+                          control={<Checkbox size="small" />}
                           label="Ordre baissez panto (COGC)"
                         />
                       </FormGroup>
