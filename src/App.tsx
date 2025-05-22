@@ -552,7 +552,11 @@ function App() {
                   <Typography color="white">°C</Typography>
                 </Grid>
                 <Grid>
+                  <Typography color="white">Précipitation : 1 %</Typography>
                   <Typography color="white">Vent : 8 km/h</Typography>
+                  <Typography color="white">
+                    Canicule / Forte chaleur
+                  </Typography>
                 </Grid>
               </Grid>
               <Grid container gap={1}>
@@ -595,7 +599,7 @@ function App() {
                   >
                     ven. 23
                     <WbSunnyOutlinedIcon />
-                    21 °
+                    22 °
                   </Grid>
                 </Box>
                 <Box
@@ -616,7 +620,7 @@ function App() {
                   >
                     sam. 24
                     <ThunderstormOutlined />
-                    21 °
+                    22 °
                   </Grid>
                 </Box>
                 <Box
@@ -637,7 +641,7 @@ function App() {
                   >
                     dim. 25
                     <CloudOutlinedIcon />
-                    21 °
+                    20 °
                   </Grid>
                 </Box>
                 <Box
@@ -679,7 +683,7 @@ function App() {
                   >
                     mar. 27
                     <WbSunnyOutlinedIcon />
-                    21 °
+                    22 °
                   </Grid>
                 </Box>
                 <Box
@@ -721,7 +725,7 @@ function App() {
                   >
                     jeu. 29
                     <WbSunnyOutlinedIcon />
-                    21 °
+                    27 °
                   </Grid>
                 </Box>
                 <Box
@@ -742,7 +746,7 @@ function App() {
                   >
                     ven. 30
                     <WbSunnyOutlinedIcon />
-                    21 °
+                    31 °
                   </Grid>
                 </Box>
               </Grid>
