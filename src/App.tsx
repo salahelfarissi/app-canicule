@@ -38,6 +38,8 @@ import { after } from "./after.js";
 import redPin from "./pin-red.svg";
 import orangePin from "./pin-orange.svg";
 
+import graph from "./collisions.png";
+
 const orangeIcon = new L.Icon({
   iconUrl: orangePin,
   iconSize: [42, 42],
@@ -103,7 +105,7 @@ function App() {
           <Grid container justifyContent="center" alignItems="center" gap={4}>
             <Grid minWidth="380px">
               <Alert severity="warning">
-                <AlertTitle>Alerte</AlertTitle>
+                <AlertTitle>Alerte 322</AlertTitle>
                 <Grid container justifyContent="space-between" gap={2}>
                   <Grid>
                     <Typography>
@@ -143,7 +145,7 @@ function App() {
           <Grid container justifyContent="center" alignItems="center" gap={4}>
             <Grid minWidth="380px">
               <Alert severity="warning">
-                <AlertTitle>Alerte</AlertTitle>
+                <AlertTitle>Alerte 323</AlertTitle>
                 <Grid container justifyContent="space-between" gap={2}>
                   <Grid>
                     <Typography>Orage / Précipitations / Obstacle</Typography>
@@ -181,7 +183,7 @@ function App() {
           <Grid container justifyContent="center" alignItems="center" gap={4}>
             <Grid minWidth="360px">
               <Alert severity="error">
-                <AlertTitle>Alerte</AlertTitle>
+                <AlertTitle>Alerte 324</AlertTitle>
                 <Grid container justifyContent="space-between" gap={2}>
                   <Grid>
                     <Typography>
@@ -311,6 +313,16 @@ function App() {
               </Grid>
             </Grid>
           </Paper>
+          <Paper>
+            <Grid container justifyContent="center">
+              <Grid>
+                <Typography variant="h5">Actions à réaliser</Typography>
+              </Grid>
+              <Grid size={12} container>
+                <Typography fontWeight="bold">Rupture caténaire</Typography>
+              </Grid>
+            </Grid>
+          </Paper>
         </Grid>
         {/* Map */}
         <Grid size={6}>
@@ -319,7 +331,8 @@ function App() {
             zoom={13}
             scrollWheelZoom={false}
             style={{
-              height: "calc(100vh - 49px)",
+              height: "calc(50vh - 49px)",
+              boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
             }}
           >
             <TileLayer
@@ -374,6 +387,22 @@ function App() {
               <Popup>Orage</Popup>
             </Marker>
           </MapContainer>
+
+          <Grid
+            container
+            justifyContent="center"
+            alignItems="center"
+            height="50vh"
+          >
+            <Box
+              component="img"
+              src={graph}
+              sx={{
+                width: "800px",
+                boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
+              }}
+            />
+          </Grid>
         </Grid>
       </Grid>
     </>
