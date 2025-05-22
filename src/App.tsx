@@ -9,6 +9,8 @@ import {
   Tooltip,
 } from "react-leaflet";
 
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
 import Alert from "@mui/material/Alert";
 import AlertTitle from "@mui/material/AlertTitle";
 import Box from "@mui/material/Box";
@@ -29,6 +31,10 @@ import Checkbox from "@mui/material/Checkbox";
 import Card from "@mui/material/Card";
 
 import TrainIcon from "@mui/icons-material/Train";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import CloudOutlinedIcon from "@mui/icons-material/CloudOutlined";
+import WbSunnyOutlinedIcon from "@mui/icons-material/WbSunnyOutlined";
+import ThunderstormOutlinedIcon from "@mui/icons-material/ThunderstormOutlined";
 
 import { useState } from "react";
 
@@ -38,8 +44,7 @@ import { after } from "./after.js";
 
 import redPin from "./pin-red.svg";
 import orangePin from "./pin-orange.svg";
-
-import graph from "./collisions.png";
+import { ThunderstormOutlined } from "@mui/icons-material";
 
 const orangeIcon = new L.Icon({
   iconUrl: orangePin,
@@ -234,10 +239,20 @@ function App() {
               />
             </Grid>
             <Grid>
-              <TextField label="PK de début" variant="outlined" size="small" />
+              <TextField
+                label="PK de début"
+                variant="outlined"
+                size="small"
+                defaultValue="447,4"
+              />
             </Grid>
             <Grid>
-              <TextField label="PK de fin" variant="outlined" size="small" />
+              <TextField
+                label="PK de fin"
+                variant="outlined"
+                size="small"
+                defaultValue="452.4"
+              />
             </Grid>
           </Grid>
           <Paper
@@ -317,100 +332,100 @@ function App() {
               </Grid>
             </Grid>
           </Paper>
-          <Paper>
-            <Grid container justifyContent="center" p={2}>
-              <Grid container size={12} justifyContent="center">
-                <Typography
-                  variant="h5"
-                  sx={{
-                    pb: 2,
-                  }}
-                >
-                  Actions à réaliser
-                </Typography>
+
+          <Accordion>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel1-content"
+              id="panel1-header"
+            >
+              <Typography variant="h5">Actions à réaliser</Typography>
+            </AccordionSummary>
+            <Paper>
+              <Grid container justifyContent="center" p={2}>
+                <Grid container gap={2}>
+                  <Grid container size={12}>
+                    <Typography
+                      fontWeight="bold"
+                      sx={{
+                        color: "#d74242",
+                      }}
+                    >
+                      Alerte 234 : Rupture caténaire
+                    </Typography>
+                  </Grid>
+                  <Grid container>
+                    <Card sx={{ p: 2 }}>
+                      <Grid container size={12}>
+                        <Typography>Alerte GMAO</Typography>
+                      </Grid>
+                      <FormGroup>
+                        <FormControlLabel
+                          control={<Checkbox size="small" defaultChecked />}
+                          label="Plan de maintenance"
+                        />
+                        <FormControlLabel
+                          control={<Checkbox size="small" />}
+                          label="Stock"
+                        />
+                      </FormGroup>
+                    </Card>
+                  </Grid>
+                  <Grid>
+                    <Card sx={{ p: 2 }}>
+                      <Grid container size={12}>
+                        <Typography>Humain</Typography>
+                      </Grid>
+                      <FormGroup>
+                        <FormControlLabel
+                          control={<Checkbox size="small" defaultChecked />}
+                          label="Prévisionnel équipe"
+                        />
+                        <FormControlLabel
+                          control={<Checkbox size="small" />}
+                          label="Tournée terrain"
+                        />
+                      </FormGroup>
+                    </Card>
+                  </Grid>
+                  <Grid>
+                    <Card sx={{ p: 2 }}>
+                      <Grid container size={12}>
+                        <Typography>Communication</Typography>
+                      </Grid>
+                      <FormGroup>
+                        <FormControlLabel
+                          control={<Checkbox size="small" defaultChecked />}
+                          label="Alerte Equipe GI / ET"
+                        />
+                        <FormControlLabel
+                          control={<Checkbox size="small" defaultChecked />}
+                          label="Autres EF / GI / EPSF / DSR / Gestionnaire Voirie"
+                        />
+                      </FormGroup>
+                    </Card>
+                  </Grid>
+                  <Grid>
+                    <Card sx={{ p: 2 }}>
+                      <Grid container size={12}>
+                        <Typography>Opérationnel</Typography>
+                      </Grid>
+                      <FormGroup>
+                        <FormControlLabel
+                          control={<Checkbox size="small" defaultChecked />}
+                          label="Mise en place d'une LTV"
+                        />
+                        <FormControlLabel
+                          control={<Checkbox size="small" defaultChecked />}
+                          label="Ordre baissez panto (COGC)"
+                        />
+                      </FormGroup>
+                    </Card>
+                  </Grid>
+                </Grid>
               </Grid>
-              <Grid container gap={2}>
-                <Grid container size={12}>
-                  <Typography
-                    fontWeight="bold"
-                    sx={{
-                      color: "#d74242",
-                    }}
-                  >
-                    Alerte 234 : Rupture caténaire
-                  </Typography>
-                </Grid>
-                <Grid container>
-                  <Card sx={{ p: 2 }}>
-                    <Grid container size={12}>
-                      <Typography>Alerte GMAO</Typography>
-                    </Grid>
-                    <FormGroup>
-                      <FormControlLabel
-                        control={<Checkbox size="small" defaultChecked />}
-                        label="Plan de maintenance"
-                      />
-                      <FormControlLabel
-                        control={<Checkbox size="small" />}
-                        label="Stock"
-                      />
-                    </FormGroup>
-                  </Card>
-                </Grid>
-                <Grid>
-                  <Card sx={{ p: 2 }}>
-                    <Grid container size={12}>
-                      <Typography>Humain</Typography>
-                    </Grid>
-                    <FormGroup>
-                      <FormControlLabel
-                        control={<Checkbox size="small" defaultChecked />}
-                        label="Prévisionnel équipe"
-                      />
-                      <FormControlLabel
-                        control={<Checkbox size="small" />}
-                        label="Tournée terrain"
-                      />
-                    </FormGroup>
-                  </Card>
-                </Grid>
-                <Grid>
-                  <Card sx={{ p: 2 }}>
-                    <Grid container size={12}>
-                      <Typography>Communication</Typography>
-                    </Grid>
-                    <FormGroup>
-                      <FormControlLabel
-                        control={<Checkbox size="small" defaultChecked />}
-                        label="Alerte Equipe GI / ET"
-                      />
-                      <FormControlLabel
-                        control={<Checkbox size="small" defaultChecked />}
-                        label="Autres EF / GI / EPSF / DSR / Gestionnaire Voirie"
-                      />
-                    </FormGroup>
-                  </Card>
-                </Grid>
-                <Grid>
-                  <Card sx={{ p: 2 }}>
-                    <Grid container size={12}>
-                      <Typography>Opérationnel</Typography>
-                    </Grid>
-                    <FormGroup>
-                      <FormControlLabel
-                        control={<Checkbox size="small" defaultChecked />}
-                        label="Mise en place d'une LTV"
-                      />
-                      <FormControlLabel
-                        control={<Checkbox size="small" defaultChecked />}
-                        label="Ordre baissez panto (COGC)"
-                      />
-                    </FormGroup>
-                  </Card>
-                </Grid>
-              </Grid>
-            </Grid>
-          </Paper>
+            </Paper>
+          </Accordion>
         </Grid>
         {/* Map */}
         <Grid size={6}>
@@ -419,7 +434,7 @@ function App() {
             zoom={13}
             scrollWheelZoom={false}
             style={{
-              height: "calc(100vh - 49px)",
+              height: "calc(50vh - 49px)",
               boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
             }}
           >
@@ -458,23 +473,278 @@ function App() {
               position={[45.6624566501422, 0.171504528005951]}
               icon={orangeIcon}
             >
-              <Popup>Orage / Foudre / Affaissement caténaire</Popup>
+              <Popup>
+                <Typography>
+                  <span
+                    style={{
+                      color: "#ef7918",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    Alerte 322 :
+                  </span>{" "}
+                  Orage / Foudre / Affaissement caténaire
+                </Typography>
+              </Popup>
             </Marker>
 
             <Marker
               position={[45.647116183027, 0.149063480514462]}
               icon={orangeIcon}
             >
-              <Popup>Canicule</Popup>
+              <Popup>
+                <Typography>
+                  <span
+                    style={{
+                      color: "#ef7918",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    Alerte 323 :
+                  </span>{" "}
+                  Orage / Précipitations / Obstacle
+                </Typography>
+              </Popup>
             </Marker>
 
             <Marker
               position={[45.6417393955014, 0.135624106078359]}
               icon={redIcon}
             >
-              <Popup>Orage</Popup>
+              <Popup>
+                <Typography>
+                  <span
+                    style={{
+                      color: "#d74242 ",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    Alerte 324 :
+                  </span>{" "}
+                  Canicule / Forte chaleur / Rupture caténaire
+                </Typography>
+              </Popup>
             </Marker>
           </MapContainer>
+          <Grid container justifyContent="center">
+            <Card
+              sx={{
+                backgroundColor: "#108fde",
+                p: 2,
+                mt: 2,
+              }}
+            >
+              <Typography color="white">Angoulême, Charent</Typography>
+              <Typography color="white" variant="caption">
+                Mise à jout il y a quelques minutes
+              </Typography>
+              <Grid container alignItems="center" gap={2}>
+                <CloudOutlinedIcon
+                  sx={{
+                    fontSize: 80,
+                    color: "white",
+                  }}
+                />
+                <Typography color="white" fontSize={62}>
+                  19
+                </Typography>
+                <Grid container>
+                  <Typography color="white">°C</Typography>
+                </Grid>
+              </Grid>
+              <Grid container gap={1}>
+                <Box
+                  sx={{
+                    backgroundColor: "#ffffff90",
+                    borderTop: "solid",
+                    borderColor: "#ffffff",
+                    display: "flex",
+                    justifyContent: "center",
+                    p: 1,
+                  }}
+                >
+                  <Grid
+                    container
+                    direction="column"
+                    alignItems="center"
+                    gap={1}
+                  >
+                    jeu. 22
+                    <CloudOutlinedIcon />
+                    21 °
+                  </Grid>
+                </Box>
+                <Box
+                  sx={{
+                    backgroundColor: "#ffffff90",
+                    borderTop: "solid",
+                    borderColor: "#ffffff",
+                    display: "flex",
+                    justifyContent: "center",
+                    p: 1,
+                  }}
+                >
+                  <Grid
+                    container
+                    direction="column"
+                    alignItems="center"
+                    gap={1}
+                  >
+                    jeu. 23
+                    <WbSunnyOutlinedIcon />
+                    21 °
+                  </Grid>
+                </Box>
+                <Box
+                  sx={{
+                    backgroundColor: "#ffffff90",
+                    borderTop: "solid",
+                    borderColor: "#ffffff",
+                    display: "flex",
+                    justifyContent: "center",
+                    p: 1,
+                  }}
+                >
+                  <Grid
+                    container
+                    direction="column"
+                    alignItems="center"
+                    gap={1}
+                  >
+                    jeu. 24
+                    <ThunderstormOutlined />
+                    21 °
+                  </Grid>
+                </Box>
+                <Box
+                  sx={{
+                    backgroundColor: "#ffffff90",
+                    borderTop: "solid",
+                    borderColor: "#ffffff",
+                    display: "flex",
+                    justifyContent: "center",
+                    p: 1,
+                  }}
+                >
+                  <Grid
+                    container
+                    direction="column"
+                    alignItems="center"
+                    gap={1}
+                  >
+                    jeu. 25
+                    <CloudOutlinedIcon />
+                    21 °
+                  </Grid>
+                </Box>
+                <Box
+                  sx={{
+                    backgroundColor: "#ffffff90",
+                    borderTop: "solid",
+                    borderColor: "#ffffff",
+                    display: "flex",
+                    justifyContent: "center",
+                    p: 1,
+                  }}
+                >
+                  <Grid
+                    container
+                    direction="column"
+                    alignItems="center"
+                    gap={1}
+                  >
+                    jeu. 26
+                    <WbSunnyOutlinedIcon />
+                    21 °
+                  </Grid>
+                </Box>
+                <Box
+                  sx={{
+                    backgroundColor: "#ffffff90",
+                    borderTop: "solid",
+                    borderColor: "#ffffff",
+                    display: "flex",
+                    justifyContent: "center",
+                    p: 1,
+                  }}
+                >
+                  <Grid
+                    container
+                    direction="column"
+                    alignItems="center"
+                    gap={1}
+                  >
+                    jeu. 27
+                    <WbSunnyOutlinedIcon />
+                    21 °
+                  </Grid>
+                </Box>
+                <Box
+                  sx={{
+                    backgroundColor: "#ffffff90",
+                    borderTop: "solid",
+                    borderColor: "#ffffff",
+                    display: "flex",
+                    justifyContent: "center",
+                    p: 1,
+                  }}
+                >
+                  <Grid
+                    container
+                    direction="column"
+                    alignItems="center"
+                    gap={1}
+                  >
+                    jeu. 28
+                    <CloudOutlinedIcon />
+                    21 °
+                  </Grid>
+                </Box>
+                <Box
+                  sx={{
+                    backgroundColor: "#ffffff90",
+                    borderTop: "solid",
+                    borderColor: "#ffffff",
+                    display: "flex",
+                    justifyContent: "center",
+                    p: 1,
+                  }}
+                >
+                  <Grid
+                    container
+                    direction="column"
+                    alignItems="center"
+                    gap={1}
+                  >
+                    jeu. 29
+                    <WbSunnyOutlinedIcon />
+                    21 °
+                  </Grid>
+                </Box>
+                <Box
+                  sx={{
+                    backgroundColor: "white",
+                    borderTop: "solid",
+                    display: "flex",
+                    justifyContent: "center",
+                    borderColor: "yellow",
+                    p: 1,
+                  }}
+                >
+                  <Grid
+                    container
+                    direction="column"
+                    alignItems="center"
+                    gap={1}
+                  >
+                    jeu. 30
+                    <WbSunnyOutlinedIcon />
+                    21 °
+                  </Grid>
+                </Box>
+              </Grid>
+            </Card>
+          </Grid>
         </Grid>
       </Grid>
     </>
