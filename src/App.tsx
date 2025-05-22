@@ -429,104 +429,7 @@ function App() {
         </Grid>
         {/* Map */}
         <Grid size={6}>
-          <MapContainer
-            center={[45.6512351921228, 0.160380979387813]}
-            zoom={13}
-            scrollWheelZoom={false}
-            style={{
-              height: "calc(50vh - 49px)",
-              boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
-            }}
-          >
-            <TileLayer
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-              url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
-            />
-            <Polyline pathOptions={limeOptions} positions={polyligne}>
-              <Tooltip>
-                <TableContainer component={Paper}>
-                  <Table>
-                    <TableHead>
-                      <TableRow>
-                        <TableCell>ID Tronçon</TableCell>
-                      </TableRow>
-                    </TableHead>
-                    <TableBody>
-                      <TableRow
-                        sx={{
-                          "&:last-child td, &:last-child th": { border: 0 },
-                        }}
-                      >
-                        <TableCell component="th" scope="row">
-                          570000-3472
-                        </TableCell>
-                      </TableRow>
-                    </TableBody>
-                  </Table>
-                </TableContainer>
-              </Tooltip>
-            </Polyline>
-            <Polyline pathOptions={beforeOptions} positions={before} />
-            <Polyline pathOptions={afterOptions} positions={after} />
-
-            <Marker
-              position={[45.6624566501422, 0.171504528005951]}
-              icon={orangeIcon}
-            >
-              <Popup>
-                <Typography>
-                  <span
-                    style={{
-                      color: "#ef7918",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    Alerte 322 :
-                  </span>{" "}
-                  Orage / Foudre / Affaissement caténaire
-                </Typography>
-              </Popup>
-            </Marker>
-
-            <Marker
-              position={[45.647116183027, 0.149063480514462]}
-              icon={orangeIcon}
-            >
-              <Popup>
-                <Typography>
-                  <span
-                    style={{
-                      color: "#ef7918",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    Alerte 323 :
-                  </span>{" "}
-                  Orage / Précipitations / Obstacle
-                </Typography>
-              </Popup>
-            </Marker>
-
-            <Marker
-              position={[45.6417393955014, 0.135624106078359]}
-              icon={redIcon}
-            >
-              <Popup>
-                <Typography>
-                  <span
-                    style={{
-                      color: "#d74242 ",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    Alerte 324 :
-                  </span>{" "}
-                  Canicule / Forte chaleur / Rupture caténaire
-                </Typography>
-              </Popup>
-            </Marker>
-          </MapContainer>
-          <Grid container justifyContent="center">
+          <Grid container justifyContent="center" mb={4}>
             <Card
               sx={{
                 backgroundColor: "#108fde",
@@ -752,6 +655,103 @@ function App() {
               </Grid>
             </Card>
           </Grid>
+          <MapContainer
+            center={[45.6512351921228, 0.160380979387813]}
+            zoom={13}
+            scrollWheelZoom={false}
+            style={{
+              height: "calc(50vh - 49px)",
+              boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
+            }}
+          >
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
+            />
+            <Polyline pathOptions={limeOptions} positions={polyligne}>
+              <Tooltip>
+                <TableContainer component={Paper}>
+                  <Table>
+                    <TableHead>
+                      <TableRow>
+                        <TableCell>ID Tronçon</TableCell>
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      <TableRow
+                        sx={{
+                          "&:last-child td, &:last-child th": { border: 0 },
+                        }}
+                      >
+                        <TableCell component="th" scope="row">
+                          570000-3472
+                        </TableCell>
+                      </TableRow>
+                    </TableBody>
+                  </Table>
+                </TableContainer>
+              </Tooltip>
+            </Polyline>
+            <Polyline pathOptions={beforeOptions} positions={before} />
+            <Polyline pathOptions={afterOptions} positions={after} />
+
+            <Marker
+              position={[45.6624566501422, 0.171504528005951]}
+              icon={orangeIcon}
+            >
+              <Popup>
+                <Typography>
+                  <span
+                    style={{
+                      color: "#ef7918",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    Alerte 322 :
+                  </span>{" "}
+                  Orage / Foudre / Affaissement caténaire
+                </Typography>
+              </Popup>
+            </Marker>
+
+            <Marker
+              position={[45.647116183027, 0.149063480514462]}
+              icon={orangeIcon}
+            >
+              <Popup>
+                <Typography>
+                  <span
+                    style={{
+                      color: "#ef7918",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    Alerte 323 :
+                  </span>{" "}
+                  Orage / Précipitations / Obstacle
+                </Typography>
+              </Popup>
+            </Marker>
+
+            <Marker
+              position={[45.6417393955014, 0.135624106078359]}
+              icon={redIcon}
+            >
+              <Popup>
+                <Typography>
+                  <span
+                    style={{
+                      color: "#d74242 ",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    Alerte 324 :
+                  </span>{" "}
+                  Canicule / Forte chaleur / Rupture caténaire
+                </Typography>
+              </Popup>
+            </Marker>
+          </MapContainer>
         </Grid>
       </Grid>
     </>
